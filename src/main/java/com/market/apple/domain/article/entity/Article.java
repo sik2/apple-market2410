@@ -1,7 +1,9 @@
 package com.market.apple.domain.article.entity;
 
+import com.market.apple.domain.member.entity.Member;
 import com.market.apple.global.jpa.BaseEntity;
 import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToOne;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
@@ -16,4 +18,6 @@ import lombok.experimental.SuperBuilder;
 public class Article extends BaseEntity {
     private String title;
     private String content;
+    @ManyToOne
+    private Member author;
 }
