@@ -5,6 +5,8 @@ import com.market.apple.domain.article.repository.ArticleRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @Service
 public class ArticleService {
@@ -21,5 +23,9 @@ public class ArticleService {
                         .build();
 
         articleRepository.save(article);
+    }
+
+    public List<Article> getList() {
+        return this.articleRepository.findAll();
     }
 }
