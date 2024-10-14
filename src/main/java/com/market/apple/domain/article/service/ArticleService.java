@@ -12,9 +12,13 @@ public class ArticleService {
 
     public void create(String title, String content) {
 
-        Article article = new Article();
-        article.setTitle(title);
-        article.setContent(content);
+//        Article article = new Article();
+//        article.setTitle(title);
+//        article.setContent(content);
+        Article article = Article.builder()
+                        .title(title)
+                        .content(content)
+                        .build();
 
         articleRepository.save(article);
     }
