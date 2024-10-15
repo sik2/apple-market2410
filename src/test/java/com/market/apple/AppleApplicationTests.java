@@ -25,10 +25,10 @@ class AppleApplicationTests {
 
 	@Test
 	void contextLoads() {
-		Member m = new Member();
+		Member member = memberService.join("test", "1234", "tester", "test@test.com");
 
 		for (int i = 0; i <= 30; i++) {
-			articleService.create("제목" + i, "내용" + i, m);
+			articleService.create("제목" + i, "내용" + i, member);
 		}
 
 	}
