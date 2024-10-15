@@ -19,6 +19,6 @@ public class ArticleController {
         List<Article> articleList =  this.articleService.getList();
         model.addAttribute("articleList", articleList);
 
-        return "article_list";
+        return "article/article_list";
     }
 }
