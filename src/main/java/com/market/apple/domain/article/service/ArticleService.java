@@ -2,6 +2,7 @@ package com.market.apple.domain.article.service;
 
 import com.market.apple.domain.article.entity.Article;
 import com.market.apple.domain.article.repository.ArticleRepository;
+import com.market.apple.domain.member.entity.Member;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +13,7 @@ import java.util.List;
 public class ArticleService {
     private final ArticleRepository articleRepository;
 
-    public void create(String title, String content) {
+    public void create(String title, String content, Member member) {
 
 //        Article article = new Article();
 //        article.setTitle(title);
@@ -20,6 +21,7 @@ public class ArticleService {
         Article article = Article.builder()
                         .title(title)
                         .content(content)
+                        .author(member)
                         .build();
 
         articleRepository.save(article);
