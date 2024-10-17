@@ -27,16 +27,20 @@ public class MemberService {
     }
 
     @Transactional
-    public Member whenSocialLogin(String providerTypeCode, String username, String nickname) {
-        Optional<Member> opMember = findByUsername(username);
-
-        if (opMember.isPresent()) return opMember.get();
+    public Member whenSocialLogin(String providerTypeCode, String username, String nickname) throws Exception {
+        Member member = findByUsername(username);
 
         // 소셜 로그인를 통한 가입시 비번은 없다.
         return join(username, "", nickname, ""); // 최초 로그인 시 딱 한번 실행
     }
 
-    private Optional<Member> findByUsername(String username) {
-        return memberRepository.findByusername(username);
+    public Member findByUsername(String username) throws Exception {
+        Optional<Member> optionalMember = this.memberRepository.findByusername(username);
+
+        if (optionalMember.isPresent()) {
+            return optionalMember.get();
+        } else {
+            throw  new RuntimeException("data not found");
+        }
     }
 }
