@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.security.Principal;
 import java.util.List;
@@ -34,10 +35,10 @@ public class ArticleController {
     }
 
     @PostMapping("/article/create")
-    public String create(@RequestParam("title") String title, @RequestParam("content") String content, Principal principal) throws Exception {
+    public String create(@RequestParam("title") String title, @RequestParam("content") String content, Principal principal, @RequestParam("thumbnail")MultipartFile thumbnail) throws Exception {
         Member member = memberService.findByUsername(principal.getName());
 
-        this.articleService.create(title, content, member);
+        this.articleService.create(title, content, member, thumbnail);
         return "redirect:/article/list";
     }
 
