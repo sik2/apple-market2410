@@ -3,6 +3,9 @@
     <ul th:each="article : ${articleList}">
         <li th:text="${article.title}"></li>
         <li th:text="${article.content}"></li>
+        <li>
+            <img th:src="@{|/file/${article.thumbnailImg}|}" alt="사진ㅇ">
+        </li>
     </ul>
 </div>
 <a href="/article/create">게시글 등록</a>
